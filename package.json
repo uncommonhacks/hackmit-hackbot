@@ -1,6 +1,9 @@
 {
   "name": "hackbot",
   "version": "0.0.0",
+  "engines": {
+    "node": "8.1.x"
+  },
   "private": true,
   "author": "Anish Athalye <me@anishathalye.com>",
   "description": "HackMIT's robot slave",
