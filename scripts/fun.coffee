@@ -64,10 +64,10 @@ module.exports = (robot) ->
 
   robot.hear /michael/i, (res) ->
     # make this less spammy
-    if Math.random() < 0.05
+    if Math.random() < 0.5
       robot.emit 'slack.reaction',
         message: res.message
-        name: 'silverman'
+        name: 'goomba'
 
   # match basically any 100-char-long english sentence
   robot.hear /e/i, (res) ->
