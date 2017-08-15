@@ -1,9 +1,12 @@
 {
-  "name": "hackbot",
+  "name": "uncommonhacks-hackbot",
   "version": "0.0.0",
   "private": true,
-  "author": "Anish Athalye <me@anishathalye.com>",
-  "description": "HackMIT's robot slave",
+  "contributors": [
+    "Ben Weinshel <weinshel@uchicago.edu>",
+    "Anish Athalye <me@anishathalye.com>"
+  ],
+  "description": "Uncommon Hacks's robot slave",
   "scripts": {
     "start-redis": "redis-server > /dev/null & echo $! > redis.pid",
     "stop-redis": "kill -TERM $(cat redis.pid) && rm redis.pid",
@@ -14,7 +17,7 @@
     "github": "^0.2.4",
     "google-spreadsheet": "^1.0.1",
     "hubot": "^2.19.0",
-    "hubot-conf": "^1.0.0",
+    "hubot-conf": "https://github.com/uncommonhacks/hubot-conf/tarball/7a2552471a4d7c2c2e479fa2cf9dc1df29e3c9ce",
     "hubot-diagnostics": "0.0.1",
     "hubot-good-karma": "^1.0.0",
     "hubot-group": "^1.0.0",
