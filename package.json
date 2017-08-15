@@ -7,7 +7,7 @@
   "scripts": {
     "start-redis": "redis-server > /dev/null & echo $! > redis.pid",
     "stop-redis": "kill -TERM $(cat redis.pid) && rm redis.pid",
-    "start": "./bin/hubot -a slack",
+    "start": "env $(cat .env 3>/dev/null) bin/hubot -a slack",
     "dev": "./bin/hubot -a shell"
   },
   "dependencies": {
