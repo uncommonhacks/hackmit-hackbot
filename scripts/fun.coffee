@@ -74,6 +74,11 @@ module.exports = (robot) ->
       message: res.message
       name: 'goomba'
 
+  robot.hear /:+1:/i, (res) ->
+    robot.emit 'slack.reaction',
+      message: res.message
+      name: '+1'
+
   robot.hear /goomba/i, (res) ->
     robot.emit 'slack.reaction',
       message: res.message
