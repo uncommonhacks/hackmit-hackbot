@@ -194,7 +194,7 @@ thank mr skeltal
     if Math.random() < 0.2
       res.send 'tfti'
 
-  robot.hear /^same$/, (res) ->
+  robot.hear /same/i, (res) ->
     res.send 'same'
 
   robot.respond /correct (.*)/, (res) ->
