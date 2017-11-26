@@ -195,8 +195,7 @@ thank mr skeltal
       res.send 'tfti'
 
   robot.hear /^same$/, (res) ->
-    if Math.random() < 0.4
-      res.send 'same'
+    res.send 'same'
 
   robot.respond /correct (.*)/, (res) ->
     msg = res.match[1]
