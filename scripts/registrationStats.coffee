@@ -1,8 +1,8 @@
 # Description:
-#   HackMIT registration statistics.
+#   Quill registration statistics.
 #
 # Configuration:
-#   HUBOT_HACKMIT_AUTH_TOKEN
+#   HUBOT_QUILL_AUTH_TOKEN
 #
 # Commands:
 #   hubot reg stats|summary - get HackMIT reg stats summary
@@ -28,23 +28,23 @@ formatSummary = (data) ->
   maxMale = Math.round(100 * femAndOther / (femAndOther + data.confirmedMale))
   nonMale = if minMale isnt maxMale then minMale + '-' + maxMale else minMale
 
-  mit = Math.round(100 * data.confirmedMit / data.confirmed)
+  uchicago = Math.round(100 * data.confirmedUChicago / data.confirmed)
   red = Math.round(100 * data.teamRed / data.confirmed)
   blue = Math.round(100 * data.teamBlue / data.confirmed)
 
   """*=== Registration Stats ===*
   *Confirmed:* #{data.confirmed} (_#{Math.round(100 * data.confirmed / data.admitted)}%_)
-  _#{nonMale}% non-male_, _#{mit}% MIT_
+  _#{nonMale}% non-male_, _#{uchicago}% UChicago_
   _#{blue}%_ :blue_heart: :heart: _#{red}%_"""
 
 module.exports = (robot) ->
 
-  config = require('hubot-conf')('hackmit', robot)
+  config = require('hubot-conf')('quill', robot)
 
   stats = { data: null, time: null }
 
   getStats = (res, callback) ->
-    robot.http("https://my.hackmit.org/api/users/stats")
+    robot.http("https://registration.uncommonhacks.com/api/users/stats")
         .header('Accept', 'application/json')
         .header('x-access-token', config("auth.token"))
         .get() (err, httpResponse, body) ->
