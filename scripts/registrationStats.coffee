@@ -31,7 +31,7 @@ formatSummary = (data) ->
   uchicago = Math.round(100 * data.confirmedUChicago / data.confirmed)
 
   """*=== Registration Stats ===*
-  *Logged in:* #{data.verified}
+  *Logged in:* #{data.total}
   *Submitted:* #{data.submitted}
   *Admitted:* #{data.admitted} (_#{Math.round(100 * data.admitted / data.submitted)}%_)
   *Confirmed:* #{data.confirmed} (_#{Math.round(100 * data.confirmed / data.admitted)}%_)
