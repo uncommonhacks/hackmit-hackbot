@@ -30,12 +30,22 @@ formatSummary = (data) ->
 
   uchicago = Math.round(100 * data.confirmedUChicago / data.confirmed)
 
-  """*=== Registration Stats ===*
-  *Logged in:* #{data.total}
-  *Submitted:* #{data.submitted}
-  *Admitted:* #{data.admitted} (_#{Math.round(100 * data.admitted / data.submitted)}%_)
-  *Confirmed:* #{data.confirmed} (_#{Math.round(100 * data.confirmed / data.admitted)}%_)
-  _#{nonMale}% non-male_, _#{uchicago}% UChicago_"""
+  if data.confirmed > 0
+    """*=== Registration Stats ===*
+    *Logged in:* #{data.total}
+    *Submitted:* #{data.submitted}
+    *Admitted:* #{data.admitted} (_#{Math.round(100 * data.admitted / data.submitted)}%_)
+    *Confirmed:* #{data.confirmed} (_#{Math.round(100 * data.confirmed / data.admitted)}%_)
+    _#{nonMale}% non-male_, _#{uchicago}% UChicago_"""
+  else if data.admitted > 0
+    """*=== Registration Stats ===*
+    *Logged in:* #{data.total}
+    *Submitted:* #{data.submitted}
+    *Admitted:* #{data.admitted} (_#{Math.round(100 * data.admitted / data.submitted)}%_)"""
+  else
+    """*=== Registration Stats ===*
+    *Logged in:* #{data.total}
+    *Submitted:* #{data.submitted}"""
 
 module.exports = (robot) ->
 
