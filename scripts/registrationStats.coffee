@@ -29,13 +29,13 @@ formatSummary = (data) ->
   nonMale = if minMale isnt maxMale then minMale + '-' + maxMale else minMale
 
   uchicago = Math.round(100 * data.confirmedUChicago / data.confirmed)
-  red = Math.round(100 * data.teamRed / data.confirmed)
-  blue = Math.round(100 * data.teamBlue / data.confirmed)
 
   """*=== Registration Stats ===*
+  *Logged in:* #{data.verified}
+  *Submitted:* #{data.submitted}
+  *Admitted:* #{data.admitted} (_#{Math.round(100 * data.admitted / data.submitted)}%_)
   *Confirmed:* #{data.confirmed} (_#{Math.round(100 * data.confirmed / data.admitted)}%_)
-  _#{nonMale}% non-male_, _#{uchicago}% UChicago_
-  _#{blue}%_ :blue_heart: :heart: _#{red}%_"""
+  _#{nonMale}% non-male_, _#{uchicago}% UChicago_"""
 
 module.exports = (robot) ->
 
@@ -53,7 +53,7 @@ module.exports = (robot) ->
               data = JSON.parse body
               if stats.data == null
                 try
-                  robot.adapter.topic { room: config('stats.room', '#botspam') }, "Submitted: #{data.submitted}"
+                  robot.adapter.topic { room: config('stats.room', '#registration') }, "Submitted: #{data.submitted}"
                 catch err
                   # if room is set to some nonexistent room (to disable it)
                   console.error err
