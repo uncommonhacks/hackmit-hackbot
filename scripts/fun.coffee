@@ -55,24 +55,19 @@ module.exports = (robot) ->
         setTimeout sendFrom, lennySnakeTick, i + 1
     sendFrom 0
 
-  robot.hear /jason/i, (res) ->
-    # make this less spammy
-    if Math.random() < 0.2
-      robot.emit 'slack.reaction',
-        message: res.message
-        name: 'upvote'
-
   robot.hear /michael/i, (res) ->
     # # make this less spammy
-    # if Math.random() < 0.4
-    robot.emit 'slack.reaction',
-      message: res.message
-      name: 'goomba'
+    if Math.random() < 0.4
+      robot.emit 'slack.reaction',
+        message: res.message
+        name: 'goomba'
 
   robot.hear /mtn/i, (res) ->
-    robot.emit 'slack.reaction',
-      message: res.message
-      name: 'goomba'
+    # # make this less spammy
+    if Math.random() < 0.4
+      robot.emit 'slack.reaction',
+        message: res.message
+        name: 'goomba'
 
   robot.hear /:+1:/i, (res) ->
     robot.emit 'slack.reaction',
@@ -90,9 +85,9 @@ module.exports = (robot) ->
     if res.message.text.length > 100 && Math.random() < 0.001
       res.send "whoa whoa guys are we sure that's a good idea?"
 
-  robot.hear /work/i, (res) ->
-    if res.message.text.length > 50 && Math.random() < 0.1
-      res.send "It's not work it's Datto"
+#   robot.hear /work/i, (res) ->
+#     if res.message.text.length > 50 && Math.random() < 0.1
+#       res.send "It's not work it's Datto"
 
   dootDoot = """```
 thank mr skeltal
@@ -183,23 +178,23 @@ thank mr skeltal
   robot.hear /pusheen/i, (res) ->
     res.send res.random pusheens
 
-  robot.hear /kim.*mom/i, (res) ->
-    res.send 'https://answers.yahoo.com/question/index?qid=20100404125550AARFOJe'
+#   robot.hear /kim.*mom/i, (res) ->
+#     res.send 'https://answers.yahoo.com/question/index?qid=20100404125550AARFOJe'
 
-  robot.hear /stef/i, (res) ->
-    if Math.random() < 0.01
-      res.send res.random troll
+#   robot.hear /stef/i, (res) ->
+#     if Math.random() < 0.01
+#       res.send res.random troll
 
-  robot.hear /logan/i, (res) ->
-    if Math.random() < 0.01
-      res.send res.random more_troll
+#   robot.hear /logan/i, (res) ->
+#     if Math.random() < 0.01
+#       res.send res.random more_troll
 
   robot.hear /\btfti\b/, (res) ->
     if Math.random() < 0.2
       res.send 'tfti'
 
-  robot.hear /same/i, (res) ->
-    res.send 'same'
+#   robot.hear /same/i, (res) ->
+#     res.send 'same'
 
   robot.respond /correct (.*)/, (res) ->
     msg = res.match[1]
